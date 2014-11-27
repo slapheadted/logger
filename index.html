@@ -1,0 +1,24 @@
+<html>
+<head>
+</head>
+
+<body>
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script>
+	logger = {
+		send: function(e) {
+			$.post('http://localhost:8080/api/error', e)
+			.done(function() {
+				alert('Logged!');
+			});
+		}
+	};
+
+	try {
+		throw "generic.error";
+	} catch (e) {
+		logger.send(e);
+	}
+</script>
+</body>
+</html>
